@@ -13,6 +13,7 @@ namespace StargateAPI.Business.Data
         public StargateContext(DbContextOptions<StargateContext> options)
         : base(options)
         {
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
