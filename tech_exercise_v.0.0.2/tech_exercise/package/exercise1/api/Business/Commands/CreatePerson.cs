@@ -23,7 +23,7 @@ namespace StargateAPI.Business.Commands
         {
             var person = _context.People.AsNoTracking().FirstOrDefault(z => z.Name == request.Name);
 
-            if (person is not null) throw new BadHttpRequestException("Bad Request");
+            if (person is not null) throw new BadHttpRequestException("This person already exists");
 
             return Task.CompletedTask;
         }
@@ -39,19 +39,6 @@ namespace StargateAPI.Business.Commands
         }
         public async Task<CreatePersonResult> Handle(CreatePerson request, CancellationToken cancellationToken)
         {
-            var query = $"SELECT * FROM [Person] WHERE \'{request.Name}\' = Name";
-            var existingPerson = await _context.Connection.QuerySingleOrDefaultAsync<Person>(query);
-
-            if (existingPerson != default)
-            {
-                return new CreatePersonResult()
-                {
-                    Id = existingPerson.Id,
-                    Success = false,
-                    Message = "This person already exists",
-                };
-            }
-
             var newPerson = new Person()
             {
                 Name = request.Name

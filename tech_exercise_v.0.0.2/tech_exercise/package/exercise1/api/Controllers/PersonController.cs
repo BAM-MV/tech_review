@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using StargateAPI.Business.Commands;
 using StargateAPI.Business.Queries;
 using System.Net;
@@ -12,11 +13,9 @@ namespace StargateAPI.Controllers
     public class PersonController : ControllerBase //component class like hotdogstand or frenchfrie stand
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<PersonController> _logger;
-        public PersonController(IMediator mediator, ILogger<PersonController> logger)
+        public PersonController(IMediator mediator)
         {
             _mediator = mediator;
-            _logger = logger;
         }
 
         [HttpGet("")]
@@ -75,6 +74,7 @@ namespace StargateAPI.Controllers
                     Name = name
                 });
 
+                Log.Information("Created Person", result);
                 return this.GetResponse(result);
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace StargateAPI.Controllers
                     ResponseCode = (int)HttpStatusCode.InternalServerError
                 };
 
-                _logger.LogError(ex.Message, response);
+                Log.Error(ex.Message, ex);
                 return this.GetResponse(response);
             }
 

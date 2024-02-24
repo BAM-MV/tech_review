@@ -1,0 +1,183 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\StargateUnitTest\\StargateUnitTest.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj",
+        "projectName": "StargateAPI",
+        "projectPath": "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj",
+        "packagesPath": "C:\\Users\\msalv\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\msalv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.28, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.2.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Serilog.Sinks.SQLite": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\StargateUnitTest\\StargateUnitTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\StargateUnitTest\\StargateUnitTest.csproj",
+        "projectName": "StargateUnitTest",
+        "projectPath": "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\StargateUnitTest\\StargateUnitTest.csproj",
+        "packagesPath": "C:\\Users\\msalv\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\StargateUnitTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\msalv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj": {
+                "projectPath": "C:\\Users\\msalv\\source\\repos\\tech_review\\tech_exercise_v.0.0.2\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "Moq.AutoMock": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

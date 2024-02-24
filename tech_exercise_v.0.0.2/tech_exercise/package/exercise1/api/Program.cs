@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Configuration;
+using Serilog;
 using StargateAPI.Business.Commands;
 using StargateAPI.Business.Data;
 
@@ -13,15 +14,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StargateContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("StarbaseApiDatabase")));
-//builder.Logging.ClearProviders();
-//builder.Services.AddLogging();
-//builder.Services.AddLogging().AddConfiguration(builder.Configuration.GetConnectionString("StarbaseApiDatabase"));
-//new ILoggerProviderConfiguration
-//builder.Services.AddLogging(options => options.)
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Conditional(e => e.Level == Serilog.Events.LogEventLevel.Error, wt => wt.SQLite(sqliteDbPath: Environment.CurrentDirectory + @"\starbase.db", tableName: "ExceptionLog", storeTimestampInUtc: true))
+    .WriteTo.Conditional(e => e.Level == Serilog.Events.LogEventLevel.Information, wt => wt.SQLite(sqliteDbPath: Environment.CurrentDirectory + @"\starbase.db", tableName: "SuccessLog", storeTimestampInUtc: true))
+    .CreateLogger();
 
 builder.Services.AddMediatR(cfg =>
 {
     cfg.AddRequestPreProcessor<CreateAstronautDutyPreProcessor>();
+    cfg.AddRequestPreProcessor<CreatePersonPreProcessor>();
     cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly);
 });
 
