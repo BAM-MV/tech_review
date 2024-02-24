@@ -21,7 +21,9 @@ namespace StargateAPI.Business.Commands
         {
             _context = context;
         }
-        public Task Process(UpdatePerson request, CancellationToken cancellationToken)
+
+        /// Process method executes before calling the Handle method on your handler
+        public Task Process(UpdatePerson request, CancellationToken cancellationToken) 
         {
             var person = _context.People.AsNoTracking().FirstOrDefault(z => z.Name == request.CurrentName);
 

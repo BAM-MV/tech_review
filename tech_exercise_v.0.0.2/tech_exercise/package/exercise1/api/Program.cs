@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.Configuration;
 using StargateAPI.Business.Commands;
 using StargateAPI.Business.Data;
 
@@ -12,6 +13,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StargateContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("StarbaseApiDatabase")));
+//builder.Logging.ClearProviders();
+//builder.Services.AddLogging();
+//builder.Services.AddLogging().AddConfiguration(builder.Configuration.GetConnectionString("StarbaseApiDatabase"));
+//new ILoggerProviderConfiguration
+//builder.Services.AddLogging(options => options.)
 
 builder.Services.AddMediatR(cfg =>
 {

@@ -14,7 +14,8 @@ namespace StargateAPI.Business.Data
         public virtual AstronautDetail? AstronautDetail { get; set; }
 
         public virtual ICollection<AstronautDuty> AstronautDuties { get; set; } = new HashSet<AstronautDuty>();
-
+        public virtual ICollection<ExceptionLog> ExceptionLogs { get; set; } = new HashSet<ExceptionLog>();
+        public virtual ICollection<SuccessLog> SuccessLogs { get; set; } = new HashSet<SuccessLog>();
     }
 
     public class PersonConfiguration : IEntityTypeConfiguration<Person>
@@ -25,6 +26,8 @@ namespace StargateAPI.Business.Data
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.HasOne(z => z.AstronautDetail).WithOne(z => z.Person).HasForeignKey<AstronautDetail>(z => z.PersonId);
             builder.HasMany(z => z.AstronautDuties).WithOne(z => z.Person).HasForeignKey(z => z.PersonId);
+            builder.HasMany(z => z.ExceptionLogs).WithOne(z => z.Person).HasForeignKey(z => z.PersonId);
+            builder.HasMany(z => z.SuccessLogs).WithOne(z => z.Person).HasForeignKey(z => z.PersonId);
         }
     }
 }

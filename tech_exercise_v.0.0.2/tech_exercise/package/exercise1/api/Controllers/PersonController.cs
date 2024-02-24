@@ -9,12 +9,14 @@ namespace StargateAPI.Controllers
    
     [ApiController]
     [Route("[controller]")]
-    public class PersonController : ControllerBase
+    public class PersonController : ControllerBase //component class like hotdogstand or frenchfrie stand
     {
         private readonly IMediator _mediator;
-        public PersonController(IMediator mediator)
+        private readonly ILogger<PersonController> _logger;
+        public PersonController(IMediator mediator, ILogger<PersonController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("")]
@@ -45,7 +47,7 @@ namespace StargateAPI.Controllers
         {
             try
             {
-                var result = await _mediator.Send(new GetPersonByName()
+                var result = await _mediator.Send(new GetPersonByName() //sender
                 {
                     Name = name
                 });
@@ -77,12 +79,15 @@ namespace StargateAPI.Controllers
             }
             catch (Exception ex)
             {
-                return this.GetResponse(new BaseResponse()
+                var response = new BaseResponse()
                 {
                     Message = ex.Message,
                     Success = false,
                     ResponseCode = (int)HttpStatusCode.InternalServerError
-                });
+                };
+
+                _logger.LogError(ex.Message, response);
+                return this.GetResponse(response);
             }
 
         }
