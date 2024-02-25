@@ -4,6 +4,7 @@ using Serilog;
 using StargateAPI.Business.Commands;
 using StargateAPI.Business.Queries;
 using System.Net;
+using System.Xml.Linq;
 
 namespace StargateAPI.Controllers
 {
@@ -25,13 +26,13 @@ namespace StargateAPI.Controllers
             {
                 var result = await _mediator.Send(new GetPeople()
                 {
-
                 });
-
+                Log.ForContext($"{nameof(result.People)}", result.People, true).Information("Got people");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
             {
+                Log.Error(ex, ex.Message);
                 return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,
@@ -78,7 +79,7 @@ namespace StargateAPI.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(ex, ex.Message + " {name}", name);
+                Log.ForContext($"{nameof(name)}", name).Error(ex, ex.Message);
                 return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,
