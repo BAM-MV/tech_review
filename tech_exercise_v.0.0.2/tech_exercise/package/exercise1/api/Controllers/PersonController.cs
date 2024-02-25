@@ -52,7 +52,7 @@ namespace StargateAPI.Controllers
                     Name = name
                 });
 
-                Log.ForContext($"{nameof(result)}", result, true).Information("PersonController.GetPersonByName returned result");
+                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace StargateAPI.Controllers
                 {
                     Name = name
                 });
-                Log.ForContext($"{nameof(result)}", result, true).Information("PersonController.CreatePerson returned result");
+                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
