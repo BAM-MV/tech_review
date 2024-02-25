@@ -27,7 +27,7 @@ namespace StargateAPI.Controllers
                 var result = await _mediator.Send(new GetPeople()
                 {
                 });
-                Log.ForContext($"{nameof(result)}", result, true).Information("PersonController.GetPeople returned results");
+                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
@@ -98,11 +98,12 @@ namespace StargateAPI.Controllers
             try
             {
                 var result = await _mediator.Send(UpdatePersonDto);
-
+                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
             {
+                Log.ForContext($"{nameof(UpdatePersonDto)}", UpdatePersonDto, true).Error(ex, ex.Message);
                 return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,

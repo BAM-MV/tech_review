@@ -25,9 +25,12 @@ namespace StargateAPI.Business.Commands
         /// Process method executes before calling the Handle method on your handler
         public Task Process(UpdatePerson request, CancellationToken cancellationToken) 
         {
-            var person = _context.People.AsNoTracking().FirstOrDefault(z => z.Name == request.CurrentName);
+            var currentName = _context.People.AsNoTracking().SingleOrDefault(z => z.Name == request.CurrentName);
 
-            if (person is not null) throw new BadHttpRequestException("Bad Request");
+            if (currentName is not null) { throw new ArgumentException($"{request.CurrentName} does not exist"); }
+
+            var newName = _context.People.AsNoTracking().SingleOrDefault(z => z.Name == request.NewName);
+            if (newName is not null) { throw new ArgumentException($"{request.NewName} already exists"); }
 
             return Task.CompletedTask;
         }
@@ -47,41 +50,25 @@ namespace StargateAPI.Business.Commands
 
             var existingPerson = await _context.Connection.QuerySingleOrDefaultAsync<Person>(query);
 
-            if (existingPerson == default)
+            if (existingPerson != default)
             {
+                existingPerson.Name = request.NewName;
+
+                _context.People.Update(existingPerson);
+
+                await _context.SaveChangesAsync();
+
                 return new UpdatePersonResult()
                 {
-                    Success = false,
-                    Message = "This person doesn't exist",
+                    Id = existingPerson.Id
                 };
             }
-
-            var newNameQuery = $"SELECT * FROM [Person] WHERE \'{request.NewName}\' = Name";
-
-            var newNamePerson = await _context.Connection.QuerySingleOrDefaultAsync<Person>(newNameQuery);
-
-            if(newNamePerson != default)
-            {
-                return new UpdatePersonResult()
-                {
-                    Success = false,
-                    Message = "New name already exists",
-                };
-            }
-
-
-            existingPerson.Name = request.NewName;
-
-            _context.People.Update(existingPerson);
-
-            await _context.SaveChangesAsync();
 
             return new UpdatePersonResult()
             {
-                Id = existingPerson.Id
+                Success = false,
+                Message = $"{request.CurrentName} does not exist",
             };
-
-
         }
     }
 
