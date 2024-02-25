@@ -38,7 +38,6 @@ namespace StargateAPI.Business.Queries
             result.AstronautDuties = duties.ToList();
 
             return result;
-
         }
     }
 

@@ -50,24 +50,24 @@ namespace StargateAPI.Business.Commands
 
             var existingPerson = await _context.Connection.QuerySingleOrDefaultAsync<Person>(query);
 
-            if (existingPerson != default)
+            if (existingPerson == default)
             {
-                existingPerson.Name = request.NewName;
-
-                _context.People.Update(existingPerson);
-
-                await _context.SaveChangesAsync();
-
                 return new UpdatePersonResult()
                 {
-                    Id = existingPerson.Id
+                    Success = false,
+                    Message = $"{request.CurrentName} does not exist",
                 };
             }
 
+            existingPerson.Name = request.NewName;
+
+            _context.People.Update(existingPerson);
+
+            await _context.SaveChangesAsync();
+
             return new UpdatePersonResult()
             {
-                Success = false,
-                Message = $"{request.CurrentName} does not exist",
+                Id = existingPerson.Id
             };
         }
     }
