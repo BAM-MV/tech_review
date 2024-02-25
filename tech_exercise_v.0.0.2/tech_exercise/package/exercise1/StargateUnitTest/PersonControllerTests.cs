@@ -7,7 +7,7 @@ using StargateAPI.Controllers;
 namespace StargateUnitTest;
 
 [TestClass]
-public class UnitTest1
+public class PersonControllerTests
 {
     private AutoMocker _mocker;
     private Mock<IMediator> _mediator;

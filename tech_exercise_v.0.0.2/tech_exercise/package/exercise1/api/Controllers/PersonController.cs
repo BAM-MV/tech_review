@@ -73,21 +73,18 @@ namespace StargateAPI.Controllers
                 {
                     Name = name
                 });
-
-                Log.Information("Created Person", result);
+                Log.Information("Created person: {name}", name);
                 return this.GetResponse(result);
             }
             catch (Exception ex)
             {
-                var response = new BaseResponse()
+                Log.Error(ex, ex.Message + " {name}", name);
+                return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,
                     Success = false,
                     ResponseCode = (int)HttpStatusCode.InternalServerError
-                };
-
-                Log.Error(ex.Message, ex);
-                return this.GetResponse(response);
+                });
             }
 
         }
