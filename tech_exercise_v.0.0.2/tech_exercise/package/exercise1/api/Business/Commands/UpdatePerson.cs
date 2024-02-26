@@ -27,10 +27,10 @@ namespace StargateAPI.Business.Commands
         {
             var currentName = _context.People.AsNoTracking().SingleOrDefault(z => z.Name == request.CurrentName);
 
-            if (currentName is not null) { throw new ArgumentException($"{request.CurrentName} does not exist"); }
+            if (currentName is null) { throw new BadHttpRequestException($"{request.CurrentName} does not exist"); }
 
             var newName = _context.People.AsNoTracking().SingleOrDefault(z => z.Name == request.NewName);
-            if (newName is not null) { throw new ArgumentException($"{request.NewName} already exists"); }
+            if (newName is not null) { throw new BadHttpRequestException($"{request.NewName} already exists"); }
 
             return Task.CompletedTask;
         }
