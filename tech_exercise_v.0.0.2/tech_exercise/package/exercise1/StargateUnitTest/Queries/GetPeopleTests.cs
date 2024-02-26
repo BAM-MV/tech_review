@@ -5,14 +5,14 @@ using StargateAPI.Business.Data;
 using StargateAPI.Business.Dtos;
 using StargateAPI.Business.Queries;
 
-namespace StargateUnitTest;
+namespace StargateUnitTest.Queries;
 
 [TestClass]
 public class GetPeopleHandlerTest
 {
     [TestMethod]
     public async Task Test()
-    {  
+    {
         var connection = new SqliteConnection("DataSource=:memory:");
         connection.Open();
 

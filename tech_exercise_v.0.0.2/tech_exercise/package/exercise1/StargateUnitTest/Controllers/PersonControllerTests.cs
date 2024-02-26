@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Net;
 
-namespace StargateUnitTest;
+namespace StargateUnitTest.Controllers;
 
 [TestClass]
 public class PersonControllerTests

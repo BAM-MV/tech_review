@@ -22,7 +22,7 @@ namespace StargateAPI.Business.Commands
         {
             var person = _context.People.SingleOrDefault(z => z.Name == request.Name);
 
-            if (person is not null) throw new ArgumentException("This person already exists");
+            if (person is not null) throw new BadHttpRequestException("This person already exists");
 
             return Task.CompletedTask;
         }
