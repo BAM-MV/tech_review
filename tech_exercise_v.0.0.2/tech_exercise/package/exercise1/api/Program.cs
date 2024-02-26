@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging.Configuration;
 using Serilog;
 using StargateAPI.Business.Commands;
 using StargateAPI.Business.Data;
@@ -19,6 +18,10 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Conditional(e => e.Level == Serilog.Events.LogEventLevel.Error, wt => wt.SQLite(sqliteDbPath: Environment.CurrentDirectory + @"\starbase.db", tableName: "ExceptionLog", storeTimestampInUtc: true))
     .WriteTo.Conditional(e => e.Level == Serilog.Events.LogEventLevel.Information, wt => wt.SQLite(sqliteDbPath: Environment.CurrentDirectory + @"\starbase.db", tableName: "SuccessLog", storeTimestampInUtc: true))
     .CreateLogger();
+
+//builder.Host.UseSerilog((ctx, lc) => lc
+//    .WriteTo.Console()
+//    .ReadFrom.Configuration(ctx.Configuration));
 
 builder.Services.AddMediatR(cfg =>
 {
