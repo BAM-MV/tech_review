@@ -11,7 +11,7 @@ namespace StargateUnitTest.Queries;
 public class GetPeopleHandlerTest
 {
     [TestMethod]
-    public async Task Test()
+    public async Task GetPeople_NoError()
     {
         var connection = new SqliteConnection("DataSource=:memory:");
         connection.Open();
