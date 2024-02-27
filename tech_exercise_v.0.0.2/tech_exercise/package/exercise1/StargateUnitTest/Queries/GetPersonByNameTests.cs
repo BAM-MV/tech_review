@@ -8,10 +8,10 @@ using StargateAPI.Business.Queries;
 namespace StargateUnitTest.Queries;
 
 [TestClass]
-public class GetPeopleTests
+public class GetPersonByNameTests
 {
     [TestMethod]
-    public async Task GetPeople_NoError()
+    public async Task GetPersonByNameHandler_NoError()
     {
         var connection = new SqliteConnection("DataSource=:memory:");
         connection.Open();
@@ -35,19 +35,16 @@ public class GetPeopleTests
 
         using (var context = new StargateContext(options))
         {
-            var handler = new GetPeopleHandler(context);
+            var handler = new GetPersonByNameHandler(context);
 
-            var result = await handler.Handle(new GetPeople(), default);
+            var result = await handler.Handle(new GetPersonByName() { Name = "Jimmy" } , default);
 
-            var expectedResult = new GetPeopleResult
+            var expectedResult = new GetPersonByNameResult
             {
-                People = new List<PersonAstronaut>
-                {
-                    new PersonAstronaut { PersonId = 1, Name = "Jimmy", CurrentRank = "R1", CurrentDutyTitle = "Commander", CareerStartDate = new DateTime(2024, 2, 25) },
-                    new PersonAstronaut { PersonId = 2, Name = "Teresa",  }
-                }
+                Person = new PersonAstronaut { PersonId = 1, Name = "Jimmy", CurrentRank = "R1", CurrentDutyTitle = "Commander", CareerStartDate = new DateTime(2024, 2, 25) },
             };
             result.Should().BeEquivalentTo(expectedResult);
         }
     }
+
 }

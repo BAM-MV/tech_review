@@ -40,9 +40,9 @@ namespace StargateAPI.Business.Queries
 
             result.Person = person;
 
-            query = $"SELECT * FROM [AstronautDuty] WHERE {person.PersonId} = PersonId Order By DutyStartDate Desc";
+            query = $"SELECT Rank, DutyTitle, DutyStartDate, DutyEndDate FROM [AstronautDuty] WHERE {person.PersonId} = PersonId Order By DutyStartDate Desc";
 
-            var duties = await _context.Connection.QueryAsync<AstronautDuty>(query);
+            var duties = await _context.Connection.QueryAsync<AstronautDutyDto>(query);
 
             result.AstronautDuties = duties.ToList();
 
@@ -53,6 +53,6 @@ namespace StargateAPI.Business.Queries
     public class GetAstronautDutiesByNameResult : BaseResponse
     {
         public PersonAstronaut Person { get; set; }
-        public List<AstronautDuty> AstronautDuties { get; set; } = new List<AstronautDuty>();
+        public List<AstronautDutyDto> AstronautDuties { get; set; } = new List<AstronautDutyDto>();
     }
 }
