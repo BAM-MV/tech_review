@@ -59,6 +59,7 @@ namespace StargateAPI.Business.Commands
                 };
             }
 
+            _context.Attach(existingPerson);
             existingPerson.Name = request.NewName;
 
             _context.People.Update(existingPerson);
