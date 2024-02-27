@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using MediatR;
-using StargateAPI.Business.Commands;
 using StargateAPI.Business.Data;
 using StargateAPI.Business.Dtos;
 using StargateAPI.Controllers;

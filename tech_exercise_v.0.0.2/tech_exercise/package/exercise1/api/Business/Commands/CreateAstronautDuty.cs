@@ -3,6 +3,7 @@ using MediatR;
 using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
 using StargateAPI.Business.Data;
+using StargateAPI.Business.Dtos;
 using StargateAPI.Controllers;
 using System.Net;
 
@@ -30,9 +31,12 @@ namespace StargateAPI.Business.Commands
 
         public Task Process(CreateAstronautDuty request, CancellationToken cancellationToken)
         {
-            var person = _context.People.AsNoTracking().FirstOrDefault(z => z.Name == request.Name);
+            var query = $"SELECT a.Id as PersonId, a.Name, b.CurrentRank, b.CurrentDutyTitle, b.CareerStartDate, b.CareerEndDate FROM [Person] a LEFT JOIN [AstronautDetail] b on b.PersonId = a.Id WHERE '{request.Name}' = a.Name";
+
+            var person = _context.Connection.QuerySingleOrDefault<PersonAstronaut>(query);
 
             if (person is null) throw new BadHttpRequestException($"{request.Name} does not exist");
+            if (person.CurrentDutyTitle.ToUpper() == "RETIRED") throw new BadHttpRequestException($"{request.Name} is retired");
 
             var verifyNoPreviousDuty = _context.AstronautDuties.FirstOrDefault(z => z.DutyTitle == request.DutyTitle && z.DutyStartDate == request.DutyStartDate);
 
