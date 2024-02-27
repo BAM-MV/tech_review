@@ -1,3 +1,10 @@
+C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.csproj.AssemblyReference.cache
+C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.AssemblyInfoInputs.cache
+C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.AssemblyInfo.cs
+C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.csproj.CoreCompileInputs.cache
+C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\bin\Debug\net7.0\appsettings.json
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\bin\Debug\net7.0\StargateAPI.exe
@@ -84,13 +91,6 @@ C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\pack
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\bin\Debug\net7.0\runtimes\win-x64\native\SQLite.Interop.dll
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\bin\Debug\net7.0\runtimes\win-x86\native\SQLite.Interop.dll
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
-C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.csproj.AssemblyReference.cache
-C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.AssemblyInfoInputs.cache
-C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.AssemblyInfo.cs
-C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.csproj.CoreCompileInputs.cache
-C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\StargateAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\staticwebassets\msbuild.StargateAPI.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\staticwebassets\msbuild.build.StargateAPI.props
 C:\Users\msalv\source\repos\tech_review\tech_exercise_v.0.0.2\tech_exercise\package\exercise1\api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.StargateAPI.props

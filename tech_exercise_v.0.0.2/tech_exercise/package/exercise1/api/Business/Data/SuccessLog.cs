@@ -4,16 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StargateAPI.Business.Data;
 
+[Table("SuccessLog")]
 public class SuccessLog
 {
     public int Id { get; set; }
-    //public int? PersonId { get; set; }
-    public string Message { get; set; } = string.Empty;
+    public DateTime Timestamp { get; set; }
 
-    public DateTime TimeStamp { get; set; }
-    //public virtual Person Person { get; set; }
+    public string Level { get; set; } = string.Empty;
+    public string Exception { get; set; } = string.Empty;
+    public string RenderedMessage { get; set; } = string.Empty;
+    public string Properties { get; set; } = string.Empty;
 
-    public class AstronautDutyConfiguration : IEntityTypeConfiguration<SuccessLog>
+    public class SuccessLogConfiguration : IEntityTypeConfiguration<SuccessLog>
     {
         public void Configure(EntityTypeBuilder<SuccessLog> builder)
         {

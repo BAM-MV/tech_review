@@ -4,7 +4,6 @@ using Serilog;
 using StargateAPI.Business.Commands;
 using StargateAPI.Business.Queries;
 using System.Net;
-using System.Xml.Linq;
 
 namespace StargateAPI.Controllers
 {
