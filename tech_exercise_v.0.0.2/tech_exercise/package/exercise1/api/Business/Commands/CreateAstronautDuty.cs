@@ -35,11 +35,11 @@ namespace StargateAPI.Business.Commands
             var person = _context.Connection.QuerySingleOrDefault<PersonAstronaut>(query);
 
             if (person is null) throw new BadHttpRequestException($"{request.Name} does not exist");
-            if (person.CurrentDutyTitle.ToUpper() == "RETIRED") throw new BadHttpRequestException($"{request.Name} is retired");
+            if (person.CurrentDutyTitle == "RETIRED") throw new BadHttpRequestException($"{request.Name} is retired");
 
-            var verifyNoPreviousDuty = _context.AstronautDuties.FirstOrDefault(z => z.DutyTitle == request.DutyTitle && z.DutyStartDate == request.DutyStartDate);
+            var verifyNoPreviousDuty = _context.AstronautDuties.FirstOrDefault(z => z.PersonId == person.PersonId && z.DutyTitle == request.DutyTitle && z.DutyStartDate == request.DutyStartDate && z.Rank == request.Rank);
 
-            if (verifyNoPreviousDuty is not null) throw new BadHttpRequestException($"{request.Name} already has duty {request.DutyTitle} for state date {request.DutyStartDate}");
+            if (verifyNoPreviousDuty is not null) throw new BadHttpRequestException($"{request.Name} already has duty {request.DutyTitle} with rank {request.Rank} for state date {request.DutyStartDate}");
 
             return Task.CompletedTask;
         }
