@@ -27,7 +27,7 @@ namespace StargateAPI.Controllers
                     Name = name
                 });
 
-                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
+                Log.ForContext($"{nameof(result)}", result, true).Information("AstronautDutyController.GetAstronautDutiesByName returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace StargateAPI.Controllers
             try
             {
                 var result = await _mediator.Send(request);
-                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
+                Log.ForContext($"{nameof(result)}", result, true).Information("AstronautDutyController.CreateAstronautDuty returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)

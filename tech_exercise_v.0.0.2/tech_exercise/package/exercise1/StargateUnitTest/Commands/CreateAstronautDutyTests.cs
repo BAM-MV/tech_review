@@ -105,7 +105,7 @@ public class CreateAstronautDutyTests
             var act = async () => await preProcessor.Process(param, default);
 
             await act.Should().ThrowAsync<BadHttpRequestException>()
-                .WithMessage("Teresa Gonzales already has duty Commander for state date 2/26/2024 12:00:00 AM");
+                .WithMessage("Teresa Gonzales already has duty Commander with rank R1 for date 2/26/2024 12:00:00 AM");
         }
     }
 }

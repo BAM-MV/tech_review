@@ -11,7 +11,7 @@ namespace StargateAPI.Controllers
    
     [ApiController]
     [Route("[controller]")]
-    public class PersonController : ControllerBase //component class like hotdogstand or frenchfrie stand
+    public class PersonController : ControllerBase
     {
         private readonly IMediator _mediator;
         public PersonController(IMediator mediator)
@@ -47,7 +47,7 @@ namespace StargateAPI.Controllers
         {
             try
             {
-                var result = await _mediator.Send(new GetPersonByName() //sender
+                var result = await _mediator.Send(new GetPersonByName()
                 {
                     Name = name
                 });
@@ -76,7 +76,7 @@ namespace StargateAPI.Controllers
                 {
                     Name = name
                 });
-                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
+                Log.ForContext($"{nameof(result)}", result, true).Information("PersonController.CreatePerson returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
@@ -98,7 +98,7 @@ namespace StargateAPI.Controllers
             try
             {
                 var result = await _mediator.Send(UpdatePersonDto);
-                Log.ForContext($"{nameof(result)}", result, true).Information($"{ControllerContext.ActionDescriptor.ControllerName}.{ControllerContext.ActionDescriptor.ActionName} returned result");
+                Log.ForContext($"{nameof(result)}", result, true).Information("PersonController.UpdatePerson returned result");
                 return this.GetResponse(result);
             }
             catch (Exception ex)
