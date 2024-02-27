@@ -10,32 +10,42 @@ namespace StargateUnitTest.Commands;
 [TestClass]
 public class CreateAstronautDutyTests
 {
-    //[TestMethod]
-    //public async Task CreateAstronautDutyTests_NoError()
-    //{
-    //    var connection = new SqliteConnection("DataSource=:memory:");
-    //    connection.Open();
+    [TestMethod]
+    public async Task CreateAstronautDutyHandler_NoError()
+    {
+        var connection = new SqliteConnection("DataSource=:memory:");
+        connection.Open();
 
-    //    var options = new DbContextOptionsBuilder<StargateContext>().UseSqlite(connection).Options;
+        var options = new DbContextOptionsBuilder<StargateContext>().UseSqlite(connection).Options;
 
-    //    using (var context = new StargateContext(options))
-    //    {
-    //        context.Database.EnsureCreated();
-    //    }
+        using (var context = new StargateContext(options))
+        {
+            context.Database.EnsureCreated();
+        }
 
-    //    using (var context = new StargateContext(options))
-    //    {
-    //        var handler = new CreatePersonHandler(context);
+        using (var context = new StargateContext(options))
+        {
+            context.People.Add(new Person { Id = 1, Name = "Teresa Gonzales" });
+            context.AstronautDuties.Add(new AstronautDuty { Id = 1, PersonId = 1, Rank = "R1", DutyTitle = "Pilot", DutyStartDate = new DateTime(2024, 2, 1) });
+            context.AstronautDetails.Add(new AstronautDetail { Id = 1, PersonId = 1, CurrentRank = "R1", CurrentDutyTitle = "Pilot", CareerStartDate = new DateTime(2024, 2, 1) });
+            await context.SaveChangesAsync();
+        }
 
-    //        var result = await handler.Handle(new CreatePerson() { Name = "Teresa Gonzales"}, default);
 
-    //        var expectedResult = new CreatePersonResult
-    //        {
-    //            Id = 1,
-    //        };
-    //        result.Should().BeEquivalentTo(expectedResult);
-    //    }
-    //}
+        using (var context = new StargateContext(options))
+        {
+            var handler = new CreateAstronautDutyHandler(context);
+
+            var param = new CreateAstronautDuty() { Name = "Teresa Gonzales", Rank = "R1", DutyTitle = "Commander", DutyStartDate = new DateTime(2024, 2, 26) };
+            var result = await handler.Handle(param, default);
+
+            var expectedResult = new CreateAstronautDutyResult
+            {
+                Id = 2,
+            };
+            result.Should().BeEquivalentTo(expectedResult);
+        }
+    }
 
     [TestMethod]
     public async Task CreateAstronautDutyPreProcessor_NoOverlapInDuties()

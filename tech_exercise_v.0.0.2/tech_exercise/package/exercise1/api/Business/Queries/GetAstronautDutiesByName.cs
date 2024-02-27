@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MediatR;
+using StargateAPI.Business.Commands;
 using StargateAPI.Business.Data;
 using StargateAPI.Business.Dtos;
 using StargateAPI.Controllers;
@@ -28,6 +29,15 @@ namespace StargateAPI.Business.Queries
             var query = $"SELECT a.Id as PersonId, a.Name, b.CurrentRank, b.CurrentDutyTitle, b.CareerStartDate, b.CareerEndDate FROM [Person] a LEFT JOIN [AstronautDetail] b on b.PersonId = a.Id WHERE \'{request.Name}\' = a.Name";
 
             var person = await _context.Connection.QueryFirstOrDefaultAsync<PersonAstronaut>(query);
+
+            if (person == default)
+            {
+                return new GetAstronautDutiesByNameResult()
+                {
+                    Success = false,
+                    Message = $"{request.Name} does not exist",
+                };
+            }
 
             result.Person = person;
 
